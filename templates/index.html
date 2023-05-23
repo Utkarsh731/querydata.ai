@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>QueryData.AI</title>
+    <title>Add Fields</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var fieldIndex = 1;
+
+            $('#add-field-btn').click(function() {
+                var newRow = $('<div>').addClass('row field-row');
+                newRow.append('<div class="col"><input type="text" class="form-control" name="field_name" placeholder="Field Name"></div>');
+                newRow.append('<div class="col"><select class="form-control" name="field_type"><option value="INTEGER">INTEGER</option><option value="TEXT">TEXT</option><option value="REAL">REAL</option><!-- Add more options for other supported types --></select></div>');
+
+                $('.field-container').append(newRow);
+                fieldIndex++;
+            });
+        });
+    </script>
 </head>
 <body>
-<h1> Welcome to the QueryData.AI</h1>
+    <div class="container">
+        <h1>Add Fields</h1>
+        <form method="POST">
+            <div class="field-container">
+                <div class="row field-row">
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="field_name" placeholder="Field Name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <select class="form-control" name="field_type">
+                                <option value="INTEGER">INTEGER</option>
+                                <option value="TEXT">TEXT</option>
+                                <option value="REAL">REAL</option>
+                                <!-- Add more options for other supported types -->
+                            </select>
+                            <span class="input-group-addon bg-success">
+                                <i class="bi bi-chevron-down"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-3" id="add-field-btn">Add Field</button>
+            <br><br>
+            <input type="submit" class="btn btn-success" value="Submit">
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.6.1/bootstrap-icons.min.js"></script>
 </body>
 </html>
