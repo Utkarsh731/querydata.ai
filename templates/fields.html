@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Fields</title>
+</head>
+<body>
+    <h1>Fields:</h1>
+    <ul>
+        {% for field in fields %}
+        <li>{{ field.name }} - {{ field.type }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
