@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Show Fields</title>
-</head>
-<body>
-    <h1>Fields:</h1>
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <link href="/static/css/style.css" media="screen" rel="stylesheet" type="text/css">
+      <link href="/feed.atom" rel="alternate" title="Main Atom feed" type="application/atom+xml">
+      <link href="/feed.json" rel="alternate" title="Main JSON feed" type="application/json">
+      <link rel="apple-touch-icon" sizes="180x180" href="/static/images/general/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/images/general/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/images/general/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var fieldIndex = 1;
+
+            $('#add-field-btn').click(function() {
+                var newRow = $('<div>').addClass('row field-row');
+                newRow.append('<div class="col"><input type="text" class="form-control" name="field_name" placeholder="Field Name"></div>');
+                newRow.append('<div class="col"><select class="form-control" name="field_type"><option value="INTEGER">INTEGER</option><option value="TEXT">TEXT</option><option value="REAL">REAL</option><!-- Add more options for other supported types --></select></div>');
+
+                $('.field-container').append(newRow);
+                fieldIndex++;
+            });
+        });
+    </script>
+  </head>
+  <body>
+    <header id="masthead">
+        <h1><a href="/" title="Nerdy Bio Interviews">nerdy <span>bio</span></a></h1>
+        <p id="description">awesome interviews!</p>
+    </header>
+    <nav id="control">
+        <ul>
+          <li><a href="/" title="The latest interviews.">Interviews</a></li>
+          <li><a href="/category" title="All of the interview categories.">Categories</a></li>
+          <li><a href="/about" title="General site information and FAQ.">About</a></li>
+        </ul>
+    </nav>
+    <main>
+          <h1>Fields:</h1>
     <ul>
         {% for field in fields %}
         <li>{{ field.name }} - {{ field.type }}</li>
         {% endfor %}
     </ul>
-</body>
+    </main>
+    <footer>
+        </form>
+        <p>Promoted By-</p>
+        <div>
+          <a itemprop="url"  target="_blank" href="https://statusneo.com/">
+            <img itemprop="image" class="qodef-normal-logo" src="/static/images/general/sneo.png"  height="40" width="150" alt="logo"/>
+          </a>
+        </div>
+        <p> Follow Us-</p>
+        <br>
+       <div>
+          <a itemprop="url" target="_blank" href="https://www.linkedin.com/company/nerdy-bio/">
+            <img itemprop="image" class="qodef-normal-logo" src="/static/images/general/linkedin.png" height="50" width="50" alt="logo"/></a>
+          <a itemprop="url" target="_blank" href="https://www.instagram.com/nerdybio/">
+            <img itemprop="image" class="qodef-normal-logo" src="/static/images/general/insta.png" height="50" width="50" alt="logo"/></a>
+        </div>
+
+    </footer>
+  </body>
 </html>
